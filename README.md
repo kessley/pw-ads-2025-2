@@ -11,4 +11,4 @@
 10. Escolha um pasta local do computador para armazenar os arquivos do repositório clonado.
 11. Ao ser perguntado se deseja abrir o repositório clonado, clique sobre o botão <code>[Abrir]</code>.
 
----
+------
