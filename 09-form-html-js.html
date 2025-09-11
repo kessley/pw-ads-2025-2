@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <form>
+            <div>
+                <label>
+                    <span>Nome:</span>
+                    <input id="campo-nome">
+                </label>
+                <div>
+                    <label>
+                        <input type="checkbox" id="maiusc">
+                        <span>Colocar o nome em maiusculas</span>
+                    </label>
+                </div>
+                <div id="resultado" ></div>
+                <div>
+                    <button type="submit" >enviar</button>
+                </div>
+            </div>
+        </form>
+    </h1>
+
+    <script>
+        let nome, maiusc
+        function handleChange(event){
+            maiusc = document.getElementById('maiusc').checked
+            nome = maiusc ? document.getElementById('campo-nome').value.toUpperCase() : document.getElementById('campo-nome').value
+
+            document.getElementById('resultado').innerText = nome
+        }
+
+        function handleSubmit(event){
+            event.preventDefault() // Evita o comportamento padrão do submit, que recarrega a página
+            alert(`O nome é ${nome}`)
+        }
+
+        document.getElementById('campo-nome').addEventListener('input', handleChange)
+        document.getElementById('maiusc').addEventListener('change', handleChange)
+    </script>
+
+</body>
+
+</html>
