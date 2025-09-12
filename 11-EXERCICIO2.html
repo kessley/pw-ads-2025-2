@@ -13,6 +13,43 @@
   <div id="root"></div>
 
   <script type="text/babel">
+    function Form() {
+      const valRealRef = React.useRef()
+      const valContacaoRef = React.useRef()
+      const resultadoRef = React.useRef()
+
+      function handleChange(event) {
+        const valReal = valRealRef.current.value
+        const valContacao = valContacaoRef.current.value
+        const valConvertido = (valReal / valContacao).toFixed(2)
+        resultadoRef.current.textContent = valConvertido
+      }
+
+      return (
+        <>
+          <h1>Exercício 2</h1>
+          <form>
+            <div>
+              <label>
+                <span>Valor em reais:</span> <br />
+                <input ref={valRealRef} onChange={handleChange} type="number" />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span>Cotação do dólar:</span> <br />
+                <input ref={valContacaoRef} onChange={handleChange} type="number" />
+              </label>
+            </div>
+            <div>
+              <span>Resultado da conversão:</span> <br />
+              <div ref={resultadoRef} />
+            </div>
+          </form>
+        </>
+      )
+    }
+    
     /*
     1) Crie um formulário em React e coloque nele um input numérico com o label "Valor em reais".
 
@@ -35,6 +72,8 @@
     8) Faça o necessário para que o formulário seja renderizado ao exibir a página.
 
     */
+   const root = ReactDOM.createRoot(document.querySelector('#root'))
+    root.render(<Form />)
   </script>
   
 </body>
