@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Form() {
+            //nao tenho muito oque comentar o codigo é bem simples
+
+
+            // Foi usado useState para pegar as variaveis dos inputs
+            // Escolhi o useState por achar muito mais simples de usar e direto do que useRef.
+
+            const [raio_maior, setRaio_maior] = React.useState(0)
+            const [raio_menor, setRaio_menor] = React.useState(0)
+            // aqui é calculado o resultado da area da elipse conforme esta na prova
+            const resultado = (Math.PI * Number(raio_maior) * Number(raio_menor)).toLocaleString(
+                'pt-br',
+                {
+                    minimunFractionDigits: 4,
+                    maximumFractionDigits: 4
+                }
+            )
+
+            // aqui esta a estrutura html Ela é praticamente uma copia da prova mas usando elementos do react como userState
+            // a prop value nao foi passado nos exercicios anteriores mas aprendi react usando a prop value, nao sei se é o mais correto mas é como faco
+            // o onChange é oque chama a funcao de setVariavel para atualizar o valor
+            return <>
+                <h1>Calculo area de uma elipse</h1>
+                <form >
+
+                    <div>
+                        <label>
+                            <span>Medida do raio maior:</span> <br />
+                            <input type="number" value={raio_maior} onChange={event => setRaio_maior(event.target.value)} />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Medida do raio menor:</span><br/>
+                            <input type="number" value={raio_menor} onChange={event => setRaio_menor(event.target.value)} />
+                        </label>
+                    </div>
+                    <div>
+                        {resultado}
+                    </div>
+                    
+                </form>
+            </>
+        }
+
+        const root = ReactDOM.createRoot(document.querySelector('#root'))
+        root.render(<Form />)
+    </script>
+</body>
+
+</html>
