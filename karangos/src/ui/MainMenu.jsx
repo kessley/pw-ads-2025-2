@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
+import { Link } from 'react-router-dom'
+
 export default function MainMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -43,9 +45,31 @@ export default function MainMenu() {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem
+         onClick={handleClose}
+         component={Link}
+         to="/"
+         divider
+       >
+         Página inicial
+       </MenuItem>
+      
+       <MenuItem
+         onClick={handleClose}
+         component={Link}
+         to="/cars"
+       >
+         Listagem de veículos
+       </MenuItem>
+
+
+       <MenuItem
+         onClick={handleClose}
+         component={Link}
+         to="/customers"
+       >
+         Listagem de clientes
+       </MenuItem>
       </Menu>
     </div>
   );
